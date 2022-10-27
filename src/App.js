@@ -1,18 +1,26 @@
 import { useState } from "react";
+import { ChildArea } from "./ChildArea";
 import "./styles.css";
 
 export default function App() {
-  console.log("App re-rendered");
-  const [count, setCount] = useState(0);
-  const onClickCountUp = () => {
-    setCount(count + 1);
+  console.log("App!!");
+  const [text, setText] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const onChangeText = (e) => {
+    setText(e.target.value);
+  };
+
+  const onClickOpen = () => {
+    setOpen(!open);
   };
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <p>{count}</p>
-      <button onClick={onClickCountUp}>Count Up</button>
+      <input value={text} onChange={onChangeText} />
+      <br />
+      <br />
+      <button onClick={onClickOpen}>Display</button>
+      <ChildArea open={open} />
     </div>
   );
 }
