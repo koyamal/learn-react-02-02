@@ -7,7 +7,7 @@ const style = {
 };
 
 export const ChildArea = memo((props) => {
-  const { open } = props;
+  const { open, onClickClose } = props;
   console.log("ChildArea is rendered");
   const [count, setCount] = useState(0);
   const onClickCount = () => {
@@ -24,7 +24,9 @@ export const ChildArea = memo((props) => {
       {open && (
         <div style={style}>
           <p>Child Component</p>
-          <button onClick={onClickCount}>Button</button>
+          <button onClick={onClickCount}>CountUp</button>
+          <br />
+          <button onClick={onClickClose}>Close</button>
         </div>
       )}
     </>
