@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 
 const style = {
   width: "100%",
@@ -9,6 +9,11 @@ const style = {
 export const ChildArea = memo((props) => {
   const { open } = props;
   console.log("ChildArea is rendered");
+  const [count, setCount] = useState(0);
+  const onClickCount = () => {
+    setCount(count + 1);
+    console.log("State( in ChildArea ) is Changed");
+  };
 
   const data = [...Array(2000).keys()];
   data.forEach(() => {
@@ -19,6 +24,7 @@ export const ChildArea = memo((props) => {
       {open && (
         <div style={style}>
           <p>Child Component</p>
+          <button onClick={onClickCount}>Button</button>
         </div>
       )}
     </>
